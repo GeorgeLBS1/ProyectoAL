@@ -60,6 +60,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Filtros.cs" />
     <Compile Include="Utilities\GlobalData.cs" />
     <Compile Include="Utilities\Matrices.cs" />
     <EmbeddedResource Include="Form1.resx">

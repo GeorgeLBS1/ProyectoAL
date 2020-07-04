@@ -11,31 +11,7 @@ namespace ProyectoAL.Utilities
 {
     class Matrices
     {
-        public byte[,] ImageTo2DByteArray(Bitmap bmp)
-        {
-            int width = bmp.Width;
-            int height = bmp.Height;
-            BitmapData data = bmp.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
-
-            byte[] bytes = new byte[height * data.Stride];
-            try
-            {
-                Marshal.Copy(data.Scan0, bytes, 0, bytes.Length);
-            }
-            finally
-            {
-                bmp.UnlockBits(data);
-            }
-
-            byte[,] result = new byte[height, width];
-            for (int y = 0; y < height; ++y)
-                for (int x = 0; x < width; ++x)
-                {
-                    int offset = y * data.Stride + x * 3;
-                    result[y, x] = (byte)((bytes[offset + 0] + bytes[offset + 1] + bytes[offset + 2]) / 3);
-                }
-            return result;
-        }
+        
         public Bitmap GrayScaleFilter(Bitmap image)
         {
             Bitmap grayScale = new Bitmap(image.Width, image.Height);
@@ -87,7 +63,7 @@ namespace ProyectoAL.Utilities
             }
         }
 
-
+        //PARA MATRICES NORMALES
         double[,] SubMatriz(double[,] Entrada, int fila, int columna) //Creación de una matriz de 3*3 en base al valor obtenido actual
         {
             double[,] Salida =  {
@@ -179,6 +155,62 @@ namespace ProyectoAL.Utilities
                 }
             }
             return max;
+        }
+
+        //PARA IMAGENES
+        public Bitmap AplicarFiltro(Bitmap Original, double[,] filtro) //AQUÍ SE MANIPULA TODA LA IMAGEN
+        {
+            Bitmap Salida = new Bitmap(Original.Width, Original.Height);
+
+            for (int i = 0; i < Original.Width; i++)
+            {
+                for (int j = 0; j < Original.Height; j++)
+                {
+                    if (j == 0 || i == 0 || (j == Original.Height - 1) || (i == Original.Width - 1)) //ESTO SUCEDE PARA CORREGIR LOS BORDES (no se les asignará filtro y se copiará tal cual la imagen original)
+                    {
+                        Salida.SetPixel(i,j,Original.GetPixel(i,j));
+                    }
+                    else //(Aqui ya se aplicarán los filtros)
+                    {
+                        var matrizMenor = SubMatriz(Original, i, j); //SE SACA UNA MATRIZ PEQUEÑA CON SOLO LOS VALORES DEL INDICE A OPERAR
+
+                        //APLICACIÓN DEL FILTRO:
+
+                        Salida.SetPixel(i, j, NValor(matrizMenor, filtro));
+                    }
+                }
+            }
+            return Salida;
+        }
+        double[,] SubMatriz(Bitmap Entrada, int fila, int columna) //Creación de una matriz de 3*3 en base al valor obtenido actual
+        {
+            double[,] Salida =  {
+                                    { Entrada.GetPixel(fila-1,columna-1).G, Entrada.GetPixel(fila-1,columna).G, Entrada.GetPixel(fila-1,columna+1).G},
+                                    { Entrada.GetPixel(fila,columna-1).G, Entrada.GetPixel(fila,columna).G, Entrada.GetPixel(fila,columna+1).G},
+                                    { Entrada.GetPixel(fila+1,columna-1).G, Entrada.GetPixel(fila+1,columna).G, Entrada.GetPixel(fila+1,columna+1).G}};
+            return Salida;
+        }
+        Color NValor(double[,] Submatriz, double[,] filtro) //SE USA PARA CALCULAR EL VALOR NUEVO OBTENIDO POR EL FILTRO
+        {
+            double resultado = 0;
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    double ResultadoParcial = Submatriz[i, j] * filtro[i, j]; //Se almacena solo el resultado de multiplicar el valor de la original[i,j] * filtro[i,j]
+                    resultado += ResultadoParcial; //Resultado acumulativo que se devolverá al final 
+                }
+            }
+            if (resultado > 255)
+            {
+                resultado = 255;
+            }
+            if (resultado < 0)
+            {
+                resultado = 0;
+            }
+            
+            return Color.FromArgb((int)resultado, (int)resultado, (int)resultado);
         }
     }
     
