@@ -43,10 +43,10 @@ namespace ProyectoAL
 
         private void AnalizarGramatica_Click(object sender, EventArgs e)
         {
-            
-            //Form2 f2 = new Form2();
-            //f2.Show();
-            //this.Hide();
+
+            Form2 f2 = new Form2();
+            f2.Show();
+            this.Hide();
         }
 
         private void CerrarBTN_Click(object sender, EventArgs e)
