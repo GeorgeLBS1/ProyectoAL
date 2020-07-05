@@ -12,20 +12,20 @@ namespace ProyectoAL.Utilities
     class Matrices
     {
         
-        public Bitmap GrayScaleFilter(Bitmap image)
+        public Bitmap EscalaDeGrises(Bitmap original)
         {
-            Bitmap grayScale = new Bitmap(image.Width, image.Height);
+            Bitmap modificada = new Bitmap(original.Width, original.Height);
 
-            for (Int32 y = 0; y < grayScale.Height; y++)
-                for (Int32 x = 0; x < grayScale.Width; x++)
+            for (Int32 y = 0; y < modificada.Height; y++)
+                for (Int32 x = 0; x < modificada.Width; x++)
                 {
-                    Color c = image.GetPixel(x, y);
+                    Color c = original.GetPixel(x, y);
 
-                    Int32 gs = (Int32)(c.R * 0.3 + c.G * 0.59 + c.B * 0.11);
+                    Int32 grises = (Int32)(c.R * 0.3 + c.G * 0.59 + c.B * 0.11); //OPERACIONES PARA CAMBIAR DE RGB A ESCALA DE GRISES
 
-                    grayScale.SetPixel(x, y, Color.FromArgb(gs, gs, gs));
+                    modificada.SetPixel(x, y, Color.FromArgb(grises, grises, grises));
                 }
-            return grayScale;
+            return modificada;
         }
 
         //ESTOS 3 METODOS PARA IMPRIMIR SOLO FUERON UTILIZADOS PARA PRUEBAS DURANTE EL DESARROLLO
