@@ -79,21 +79,32 @@ namespace ProyectoAL
                     Filtrada = m.AplicarFiltro(GlobalData.bitmap, filtros.Original);
                     ImagenFiltrada_PTB.Image = Filtrada;
                     break;
+                case 9:
+                    
+                    if (GlobalData.Personalizado == false)
+                    {
+                        MessageBox.Show("Asegurese de haber definido un filtro personalizado previamente, de lo contrario no se mostrará nada");
+                        break;
+                    }
+                    else
+                    {
+                        Filtrada = m.AplicarFiltro(GlobalData.bitmap, GlobalData.matrizFiltro);
+                        ImagenFiltrada_PTB.Image = Filtrada;
+                    }
+                    break;
+
                 default:
                     break;
             }
         }
 
-        /*DIFUMINADO
-REALZAR
-SOBEL INFERIOR
-SOBEL SUPERIOR
-SOBEL IZQUIERDO
-SOBEL DERECHO
-CONTORNO
-AFILAR
-ORIGINAL
-PERSONALIZADO*/
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FPersonalizado f2 = new FPersonalizado();
+            f2.Show();
+            this.Hide();
+        }
+
     }
 
 }

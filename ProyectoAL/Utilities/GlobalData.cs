@@ -11,5 +11,7 @@ namespace ProyectoAL.Utilities
     {
         public static string RutaImagen; //Se almacenará la ruta de la imagen previamente cargada para poder convertirla a matriz posteriormente
         public static Bitmap bitmap; //Imagen a filtrar
+        public static bool Personalizado = false;
+        public static double[,] matrizFiltro;
     }
 }

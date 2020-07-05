@@ -33,6 +33,7 @@
             this.ImagenFiltrada_PTB = new System.Windows.Forms.PictureBox();
             this.imgBW = new System.Windows.Forms.PictureBox();
             this.cmbFiltro = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ImagenOriginalPTB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImagenFiltrada_PTB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgBW)).BeginInit();
@@ -49,7 +50,7 @@
             // 
             // BTN_Filtro
             // 
-            this.BTN_Filtro.Location = new System.Drawing.Point(503, 428);
+            this.BTN_Filtro.Location = new System.Drawing.Point(507, 431);
             this.BTN_Filtro.Name = "BTN_Filtro";
             this.BTN_Filtro.Size = new System.Drawing.Size(75, 23);
             this.BTN_Filtro.TabIndex = 2;
@@ -87,25 +88,37 @@
             "SOBEL DERECHO",
             "CONTORNO",
             "AFILAR",
-            "ORIGINAL"});
+            "ORIGINAL",
+            "PERSONALIZADO"});
             this.cmbFiltro.Location = new System.Drawing.Point(466, 385);
             this.cmbFiltro.Name = "cmbFiltro";
             this.cmbFiltro.Size = new System.Drawing.Size(156, 21);
             this.cmbFiltro.TabIndex = 5;
             this.cmbFiltro.SelectedIndexChanged += new System.EventHandler(this.cmbFiltro_SelectedIndexChanged);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(486, 474);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(115, 28);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Filtro Personalizado";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1064, 798);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cmbFiltro);
             this.Controls.Add(this.imgBW);
             this.Controls.Add(this.ImagenFiltrada_PTB);
             this.Controls.Add(this.BTN_Filtro);
             this.Controls.Add(this.ImagenOriginalPTB);
             this.Name = "Form2";
-            this.Text = "Form2";
+            this.Text = "Filtros";
             ((System.ComponentModel.ISupportInitialize)(this.ImagenOriginalPTB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImagenFiltrada_PTB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgBW)).EndInit();
@@ -120,5 +133,6 @@
         private System.Windows.Forms.PictureBox ImagenFiltrada_PTB;
         private System.Windows.Forms.PictureBox imgBW;
         private System.Windows.Forms.ComboBox cmbFiltro;
+        private System.Windows.Forms.Button button1;
     }
 }

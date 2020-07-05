@@ -67,5 +67,23 @@ namespace ProyectoAL.Utilities
                                     { 0, 0, 0},
                                     { 0, 1, 0},
                                     { 0, 0, 0}};
+        
+        //PERSONALIZADO
+        public double[,] Personalizado()
+        {
+            double[,] per = { //matriz de prueba
+                                         { 0, 0, 0},
+                                         { 0, 0, 0},
+                                         { 0, 0, 0}};
+            return per;
+        }
+        public double[,] Personalizado(double n1, double n2, double n3, double n4, double n5, double n6, double n7, double n8, double n9)
+        {
+            double[,] per = { //matriz de prueba
+                                         { n1, n2, n3},
+                                         { n4, n5, n6},
+                                         { n7, n8, n9}};
+            return per;
+        }
     }
 }
