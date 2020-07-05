@@ -185,9 +185,9 @@ namespace ProyectoAL.Utilities
         double[,] SubMatriz(Bitmap Entrada, int fila, int columna) //Creación de una matriz de 3*3 en base al valor obtenido actual
         {
             double[,] Salida =  {
-                                    { Entrada.GetPixel(fila-1,columna-1).G, Entrada.GetPixel(fila-1,columna).G, Entrada.GetPixel(fila-1,columna+1).G},
-                                    { Entrada.GetPixel(fila,columna-1).G, Entrada.GetPixel(fila,columna).G, Entrada.GetPixel(fila,columna+1).G},
-                                    { Entrada.GetPixel(fila+1,columna-1).G, Entrada.GetPixel(fila+1,columna).G, Entrada.GetPixel(fila+1,columna+1).G}};
+                                    { Entrada.GetPixel(fila-1,columna-1).R, Entrada.GetPixel(fila-1,columna).R, Entrada.GetPixel(fila-1,columna+1).R},
+                                    { Entrada.GetPixel(fila,columna-1).R, Entrada.GetPixel(fila,columna).R, Entrada.GetPixel(fila,columna+1).R},
+                                    { Entrada.GetPixel(fila+1,columna-1).R, Entrada.GetPixel(fila+1,columna).R, Entrada.GetPixel(fila+1,columna+1).R}};
             return Salida;
         }
         Color NValor(double[,] Submatriz, double[,] filtro) //SE USA PARA CALCULAR EL VALOR NUEVO OBTENIDO POR EL FILTRO
