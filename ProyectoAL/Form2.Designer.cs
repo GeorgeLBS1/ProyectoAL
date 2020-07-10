@@ -42,9 +42,11 @@
             this.CerrarBTN = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ImagenOriginalPTB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImagenFiltrada_PTB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgBW)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // ImagenOriginalPTB
@@ -191,11 +193,22 @@
             this.label5.TabIndex = 16;
             this.label5.Text = "cargar otra imagen";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(518, 643);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(104, 100);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 18;
+            this.pictureBox2.TabStop = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1064, 798);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.CerrarBTN);
@@ -215,6 +228,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ImagenOriginalPTB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImagenFiltrada_PTB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgBW)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -235,5 +249,6 @@
         private System.Windows.Forms.Button CerrarBTN;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
